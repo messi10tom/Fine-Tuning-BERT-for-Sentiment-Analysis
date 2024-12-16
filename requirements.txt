@@ -1,0 +1,4 @@
+transformers
+python-dotenv
+groq
+matplotlib
