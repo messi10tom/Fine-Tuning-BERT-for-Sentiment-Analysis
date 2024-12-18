@@ -2,13 +2,13 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import torch
 
-from transformers import AutoModel, AutoTokenizer
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 # Model identifier on Hugging Face
 model_id = "MESSItom/BERT-review-sentiment-analysis"  # Replace with your actual model identifier
 
 # Load the model and tokenizer from Hugging Face
-model = AutoModel.from_pretrained(model_id)
+model = AutoModelForSequenceClassification.from_pretrained(model_id)
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 
 # Initialize FastAPI app
@@ -38,9 +38,14 @@ def predict_sentiment(text):
     return sentiment
 
 
-
-# Define API endpoint
+# API endpoint for prediction
 @app.post("/predict/")
 async def get_sentiment(review: Review):
     sentiment = predict_sentiment(review.text)
     return {"text": review.text, "sentiment": sentiment}
+# 
+# Welcome message at root endpoint
+@app.get("/")
+async def read_root():
+    return {"message": "Welcome to the Sentiment Analysis API. Send your review to /predict/ to get sentiment!"}
+

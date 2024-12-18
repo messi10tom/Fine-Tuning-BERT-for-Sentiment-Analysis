@@ -72,8 +72,25 @@ The task involves fine-tuning a pre-trained language model, such as BERT, to per
    pip install -r requirements.txt
    ```
 
-4. Run the ```finetune.ipynp``` to get the model:
-5. Run ```main.py```
+4. Run the app
+   ```bash
+   uvicorn main:app --reload
+   ```
+   Wait for model to load
+
+5. Go to ```http://127.0.0.1:8000/docs```
+
+6. You’ll see a Swagger UI page with the POST /predict/  endpoint.
+
+7. Expand the POST /predict/ section, and you will find a text box where the user can input their review. Enter a review like this:
+   ```json
+   Copy code
+   {
+   "text": "The collage is absolutely fantastic!"
+   }
+   ```
+   Click the Execute button.
+   You will get a response containing the sentiment.
 
 ## Model Description
 
