@@ -1,13 +1,24 @@
-from transformers import BertTokenizer, BertForSequenceClassification
+from fastapi import FastAPI
+from pydantic import BaseModel
 import torch
 
-# the directory where your model is saved
-model_dir = './results'
+from transformers import AutoModel, AutoTokenizer
 
-# Load the fine-tuned model and tokenizer
-model = BertForSequenceClassification.from_pretrained(model_dir)
-tokenizer = BertTokenizer.from_pretrained(model_dir)
+# Model identifier on Hugging Face
+model_id = "MESSItom/BERT-review-sentiment-analysis"  # Replace with your actual model identifier
 
+# Load the model and tokenizer from Hugging Face
+model = AutoModel.from_pretrained(model_id)
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+
+# Initialize FastAPI app
+app = FastAPI()
+
+# Define input schema using Pydantic
+class Review(BaseModel):
+    text: str
+
+# Prediction function
 def predict_sentiment(text):
     class_names = ['positive', 'neutral', 'negative']
     # Tokenize the input text
@@ -27,3 +38,9 @@ def predict_sentiment(text):
     return sentiment
 
 
+
+# Define API endpoint
+@app.post("/predict/")
+async def get_sentiment(review: Review):
+    sentiment = predict_sentiment(review.text)
+    return {"text": review.text, "sentiment": sentiment}

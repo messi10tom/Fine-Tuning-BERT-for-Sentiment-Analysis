@@ -3,3 +3,6 @@ env/
 
 # credentials
 .env
+
+# Saved models
+results/

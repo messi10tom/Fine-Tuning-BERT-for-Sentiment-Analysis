@@ -6,3 +6,6 @@ groq
 matplotlib
 seaborn
 scikit-learn
+flask-restful
+fastapi
+uvicorn
