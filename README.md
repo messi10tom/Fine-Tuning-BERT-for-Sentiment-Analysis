@@ -112,7 +112,64 @@ The model is based on BERT (Bidirectional Encoder Representations from Transform
 1. REST API:
    - Submit a review to receive sentiment predictions.
    - Endpoint: `/predict`
+2. Hugging Face Model:
+      - The fine-tuned BERT model is also deployed on Hugging Face for easy access and inference.
+      - You can find the model [here](https://huggingface.co/MESSItom/BERT-review-sentiment-analysis).
 
+   ### Model Card for MESSItom/BERT-review-sentiment-analysis
+
+   This model is fine-tuned from BERT to perform sentiment analysis on a custom dataset containing student reviews about campus events or amenities. The objective is to classify the sentiments (positive, negative, neutral) while maintaining high performance metrics like accuracy.
+
+   #### Model Details
+
+   - **Developed by:** Messy Tom Binoy
+   - **Funded by:** No funding, self-funded
+   - **Shared by:** Messy Tom Binoy
+   - **Model type:** BERT
+   - **Language(s) (NLP):** English
+   - **License:** MIT
+   - **Finetuned from model:** google-bert/bert-base-uncased
+
+   #### Model Sources
+
+   - **Repository:** [GitHub Repository](https://github.com/messi10tom/Fine-Tuning-BERT-for-Sentiment-Analysis/tree/main)
+   - **Demo:** [GitHub Demo](https://github.com/messi10tom/Fine-Tuning-BERT-for-Sentiment-Analysis/tree/main)
+
+   #### Uses
+
+   - **Direct Use:** Sentiment classification of student reviews about campus events or amenities.
+   - **Downstream Use:** Further fine-tuning for other sentiment analysis tasks or integration into larger applications for sentiment classification.
+   - **Out-of-Scope Use:** Not suitable for tasks outside sentiment analysis, such as language translation or text generation.
+
+   #### Bias, Risks, and Limitations
+
+   The model may inherit biases from the pre-trained BERT model and the custom dataset used for fine-tuning. It may not perform well on reviews that are significantly different from the training data.
+
+   #### Recommendations
+
+   Users should be aware of the potential biases and limitations of the model. It is recommended to evaluate the model on a diverse set of reviews to understand its performance and limitations.
+
+   #### How to Get Started with the Model
+
+   ```python
+   from transformers import AutoModelForSequenceClassification, AutoTokenizer
+   import torch
+
+   model_id = "MESSItom/BERT-review-sentiment-analysis"
+
+   model = AutoModelForSequenceClassification.from_pretrained(model_id)
+   tokenizer = AutoTokenizer.from_pretrained(model_id)
+
+   def predict_sentiment(text):
+       inputs = tokenizer(text, return_tensors='pt', padding=True, truncation=True, max_length=512)
+       with torch.no_grad():
+           outputs = model(**inputs)
+       logits = outputs.logits
+       predicted_class = torch.argmax(logits, dim=-1).item()
+       class_names = ['positive', 'neutral', 'negative']
+       sentiment = class_names[predicted_class]
+       return sentiment
+   ```
 
 ## License
 
