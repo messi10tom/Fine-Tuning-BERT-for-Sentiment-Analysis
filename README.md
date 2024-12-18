@@ -2,7 +2,7 @@
 
 ![Project Banner](doc/banner.webp)
 
-![GitHub repo size](https://img.shields.io/github/repo-size/username/Fine-Tuning-BERT-for-Sentiment-Analysis) ![GitHub last commit](https://img.shields.io/github/last-commit/username/Fine-Tuning-BERT-for-Sentiment-Analysis) ![GitHub issues](https://img.shields.io/github/issues/username/Fine-Tuning-BERT-for-Sentiment-Analysis) ![GitHub license](https://img.shields.io/github/license/username/Fine-Tuning-BERT-for-Sentiment-Analysis)
+![GitHub repo size](https://img.shields.io/github/repo-size/messi10tom/Fine-Tuning-BERT-for-Sentiment-Analysis) ![GitHub last commit](https://img.shields.io/github/last-commit/messi10tom/Fine-Tuning-BERT-for-Sentiment-Analysis) ![GitHub issues](https://img.shields.io/github/issues/messi10tom/Fine-Tuning-BERT-for-Sentiment-Analysis) ![GitHub license](https://img.shields.io/github/license/messi10tom/Fine-Tuning-BERT-for-Sentiment-Analysis)
 
 ## Problem Statement
 
