@@ -1,4 +1,8 @@
 transformers
+datasets
+torch
 python-dotenv
 groq
 matplotlib
+seaborn
+scikit-learn
