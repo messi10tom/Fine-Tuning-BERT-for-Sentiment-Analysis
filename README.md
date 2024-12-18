@@ -72,10 +72,8 @@ The task involves fine-tuning a pre-trained language model, such as BERT, to per
    pip install -r requirements.txt
    ```
 
-4. Run the API or web app:
-   ```bash
-   python app.py
-   ```
+4. Run the ```finetune.ipynp``` to get the model:
+5. Run ```main.py```
 
 ## Model Description
 
